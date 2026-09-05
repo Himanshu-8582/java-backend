@@ -70,4 +70,15 @@ public class StudentController {
 
         return ResponseEntity.ok("Record deleted");
     }
+
+    @PatchMapping("/delete-soft")
+    public ResponseEntity<String> deleteStudentSoftly(@RequestParam Long id) {
+        Boolean isDeleted = studentService.deleteStudentSoftly(id);
+
+        if(!isDeleted) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok("Record deleted");
+    }
 }
