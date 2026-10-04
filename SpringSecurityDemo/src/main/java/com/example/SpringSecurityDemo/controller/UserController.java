@@ -4,6 +4,7 @@ import com.example.SpringSecurityDemo.dto.UserRegisterRequestDto;
 import com.example.SpringSecurityDemo.dto.UserRegisterResponseDto;
 import com.example.SpringSecurityDemo.service.AuthService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,8 @@ public class UserController {
     }
 
     @GetMapping("/hello")
-    public String sayHello(){
-        return "Hello";
+    public String sayHello(Authentication authentication){
+        return "Hello , You are logged in as : "+ authentication.getName();
     }
 
     @PostMapping("/register")
